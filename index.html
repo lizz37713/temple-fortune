@@ -9,22 +9,10 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html, body {
-    width: 100%; height: 100%;
-  }
-
   body {
     font-family: 'Cinzel', 'Noto Serif SC', serif;
-    background: #B8A089;
-    display: flex; align-items: center; justify-content: center;
-    min-height: 100vh; overflow: hidden;
-  }
-
-  #game-scaler {
-    /* Scale the 480×720 canvas to fill the viewport while keeping aspect ratio */
-    width: 480px;
-    height: 720px;
-    transform-origin: center center;
+    background: transparent;
+    margin: 0; padding: 0;
   }
 
   #game {
@@ -254,7 +242,6 @@
 </style>
 </head>
 <body>
-<div id="game-scaler">
 <div id="game">
   <!-- Photo background -->
   <div class="bg-photo"></div>
@@ -485,7 +472,6 @@
     </div>
   </div>
 </div><!-- end #game -->
-</div><!-- end #game-scaler -->
 
 <script>
 const FORTUNES = {
@@ -636,21 +622,6 @@ function showResult() {
 }
 
 function drawAgain() { goTo(3); }
-
-// ── Responsive scaling ──────────────────────────────────────────
-const GAME_W = 480, GAME_H = 720;
-function scaleGame() {
-  const scaler = document.getElementById('game-scaler');
-  const scaleX = window.innerWidth  / GAME_W;
-  const scaleY = window.innerHeight / GAME_H;
-  const scale  = Math.min(scaleX, scaleY);
-  scaler.style.transform = 'scale(' + scale + ')';
-  scaler.style.position  = 'absolute';
-  scaler.style.left = Math.round((window.innerWidth  - GAME_W) / 2) + 'px';
-  scaler.style.top  = Math.round((window.innerHeight - GAME_H) / 2) + 'px';
-}
-window.addEventListener('resize', scaleGame);
-scaleGame();
 </script>
 </body>
 </html>
