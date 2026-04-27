@@ -79,17 +79,17 @@
   /* ── Screen 1: Welcome ── */
   #s1 .title-wrap { text-align: center; margin-bottom: 44px; }
   #s1 h1 {
-    font-size: 30px; color: #F4EFE3;
+    font-size: 30px; color: #fff;
     letter-spacing: 5px; line-height: 1.5;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.6), 0 0 30px rgba(184,160,137,0.4);
     font-family: 'Cinzel', serif;
-    font-weight: 600;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
   }
   #s1 .subtitle {
-    color: #E8D8C2; font-size: 12px;
+    color: #fff; font-size: 12px;
     letter-spacing: 4px; margin-top: 10px;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.5);
     font-family: 'Cinzel', serif;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.7);
   }
 
   .btn-fortune {
@@ -113,20 +113,23 @@
   /* ── Screen 2: Choose category ── */
   #s2 { padding: 30px 20px; }
   #s2 .prompt {
-    color: #F4EFE3; font-size: 13px; letter-spacing: 3px;
+    color: #000; font-size: 13px; letter-spacing: 3px;
     margin-bottom: 34px; text-align: center;
-    text-shadow: 0 1px 8px rgba(0,0,0,0.6);
     font-family: 'Cinzel', serif;
+    font-weight: 600;
+    text-shadow: none;
   }
   .slips-row {
-    display: flex; gap: 26px; align-items: flex-end; justify-content: center;
+    display: flex; gap: 26px; align-items: flex-start; justify-content: center;
   }
   .slip-wrap { display: flex; flex-direction: column; align-items: center; cursor: pointer; }
   .slip-label {
-    color: #E8D8C2; font-size: 10px; letter-spacing: 3px;
+    color: #000; font-size: 10px; letter-spacing: 3px;
     margin-bottom: 10px; text-align: center;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.5);
     font-family: 'Cinzel', serif; text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: none;
+    height: 16px; line-height: 16px;
   }
   .slip {
     width: 80px; height: 220px;
@@ -143,12 +146,13 @@
   }
 
   /* ── Screen 3: Shake ── */
-  #s3 { justify-content: flex-start; padding-top: 60px; }
+  #s3 { justify-content: center; padding-top: 0; }
   #s3 .prompt-top {
-    color: #F4EFE3; font-size: 13px; letter-spacing: 3px;
-    text-align: center; margin-bottom: 50px;
-    text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+    color: #000; font-size: 13px; letter-spacing: 3px;
+    text-align: center; margin-bottom: 40px;
     font-family: 'Cinzel', serif;
+    font-weight: 600;
+    text-shadow: none;
   }
   .canister-wrap {
     display: flex; flex-direction: column; align-items: center;
@@ -169,10 +173,11 @@
   /* ── Screen 4: Result ── */
   #s4 { padding: 20px; }
   #s4 .topic-label {
-    color: #E8D8C2; font-size: 11px; letter-spacing: 4px;
+    color: #000; font-size: 11px; letter-spacing: 4px;
     margin-bottom: 18px; text-align: center;
-    text-shadow: 0 1px 8px rgba(0,0,0,0.5);
     font-family: 'Cinzel', serif; text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: none;
   }
   .result-paper {
     width: 310px;
@@ -382,7 +387,7 @@
 
   <!-- SCREEN 3: Shake canister -->
   <div id="s3" class="screen">
-    <div class="prompt-top" id="s3prompt">Double-tap the canister · release your fortune</div>
+    <div class="prompt-top" id="s3prompt">Double-tap the canister<br>· release your fortune ·</div>
     <div class="canister-wrap" id="canisterWrap" ondblclick="shakeCanister()">
       <svg id="canisterSvg" class="canister" width="180" height="280" viewBox="0 0 180 280">
         <defs>
@@ -575,7 +580,7 @@ function choose(topic) {
 
 function resetShake() {
   shaken = false;
-  document.getElementById('s3prompt').textContent = 'Double-tap the canister · release your fortune';
+  document.getElementById('s3prompt').innerHTML = 'Double-tap the canister<br>· release your fortune ·';
   document.getElementById('btnReveal').style.display = 'none';
   const fly = document.getElementById('flyStick');
   fly.setAttribute('opacity', '0');
@@ -601,7 +606,7 @@ function shakeCanister() {
 
   setTimeout(() => {
     shaken = true;
-    document.getElementById('s3prompt').textContent = 'Your lot has fallen — read the omen';
+    document.getElementById('s3prompt').innerHTML = 'Your lot has fallen<br>· read the omen ·';
     document.getElementById('btnReveal').style.display = 'inline-block';
   }, 700);
 }
